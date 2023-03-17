@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "18351629358",
+    "project_id": "task-scheduler-4bae5",
+    "storage_bucket": "task-scheduler-4bae5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18351629358:android:bc2594d9dc27b93183abbf",
+        "android_client_info": {
+          "package_name": "com.rajneesh.taskscheduler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18351629358-jheu680qh9a9i0vd85b5n8bem1fugf38.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rajneesh.taskscheduler",
+            "certificate_hash": "4f344929559c9bf53ed84840d729ec7ce9176167"
+          }
+        },
+        {
+          "client_id": "18351629358-as00lfh8giqm24qjnmludtgbvavjnuhi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAptnvYQct8Dm0QNwD062Y34DCvGxzJ6UA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18351629358-as00lfh8giqm24qjnmludtgbvavjnuhi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
