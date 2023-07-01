@@ -5,6 +5,7 @@ import 'package:flutter_signin_button/button_view.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:provider/provider.dart';
 import 'package:taskscheduler/UI/home_screen.dart';
+import 'package:taskscheduler/constants/app_colors.dart';
 import 'package:taskscheduler/google_signin/google_signin.dart';
 import 'package:taskscheduler/state_management/date_selector_provider.dart';
 import 'package:taskscheduler/state_management/login_details_provider.dart';
@@ -47,20 +48,36 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: AppColors.purpleBackground,
+        elevation: 1,
         title: const Text("Login Screen"),
         centerTitle: true,
       ),
-      body: Center(
-        child: Container(
-          width: screenWidth(context) * 0.9,
-          height: screenHeight(context) * 0.05,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-          child: SignInButton(
-            Buttons.Google,
-            padding: const EdgeInsets.all(10),
-            onPressed: sigIn,
-          ),
+      body: Container(
+        width: screenWidth(context),
+        height: screenHeight(context),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 40.0),
+              child: Text(
+                "LOGIN TO MAKE TO-DO-LIST",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: 20, color: AppColors.purpleBackground),
+              ),
+            ),
+            SignInButton(
+              Buttons.Google,
+              padding: const EdgeInsets.all(10),
+              onPressed: sigIn,
+              elevation: 10,
+            ),
+          ],
         ),
       ),
     );
@@ -74,12 +91,12 @@ class _LoginScreenState extends State<LoginScreen> {
       print(loginCredential.additionalUserInfo);
       print(loginCredential.user);
       await loginProvider.userDetails(loginCredential);
-      if(loginProvider.loginDetails != null){
-        Navigator.pushAndRemoveUntil(context,
-            MaterialPageRoute(builder: (context) => const HomeScreen()), (
-                route) => false);
+      if (loginProvider.loginDetails != null) {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => const HomeScreen()),
+            (route) => false);
       }
-
     } else {
       print("something went wrong with google sigin =====>");
     }
