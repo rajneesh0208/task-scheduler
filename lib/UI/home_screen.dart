@@ -20,7 +20,11 @@ class _HomeScreenState extends State<HomeScreen> {
     GoogleSignIn _googleSignIn = GoogleSignIn();
 
     try {
+      showLoading(context);
       await _googleSignIn.signOut();
+      if (context.mounted ) {
+        Navigator.of(context).pop(); // Error on this line
+      }
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => const LoginScreen()),
