@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 1,
         centerTitle: true,
         title: const Text(
-          "HomeScreen",
+          "Home Screen",
           style: TextStyle(color: Colors.white),
         ),
       ),

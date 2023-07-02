@@ -32,6 +32,8 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
   DateTime today = DateTime.now();
   String? fUid;
 
+  String titleName = "";
+
   @override
   void initState() {
     editTask();
@@ -42,12 +44,20 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
   editTask() {
     if (widget.fireUser != null) {
       DateSelector dateSelector = Provider.of(context, listen: false);
+        setState(() {
+          taskName.text = widget.title;
+          taskDescription.text = widget.desc;
+          fUid = widget.fireUid;
+          dateSelector.eventDate = DateTime.parse(widget.date);
+          titleName = Constants.updateTask;
+        });
+
+    }
+    else{
       setState(() {
-        taskName.text = widget.title;
-        taskDescription.text = widget.desc;
-        fUid = widget.fireUid;
-        dateSelector.eventDate = DateTime.parse(widget.date);
+        titleName = Constants.addNewTask;
       });
+
     }
   }
 
@@ -58,8 +68,8 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.purpleBackground,
         elevation: 0,
-        title: const Text(Constants.addNewTask,
-            style: TextStyle(color: AppColors.white)),
+        title: Text(titleName,
+            style: const TextStyle(color: AppColors.white)),
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
@@ -108,7 +118,7 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
                     controller: taskName,
                     hintText: "Task Name",
                     label: "Task Name",
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.left,
                     textInputType: TextInputType.multiline,
                     icon: const Icon(
                       Icons.task,
@@ -119,7 +129,7 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
                     controller: taskDescription,
                     hintText: "Description",
                     label: "Description",
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.left,
                     textInputType: TextInputType.multiline,
                     icon: const Icon(
                       Icons.description_outlined,
