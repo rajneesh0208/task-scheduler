@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     try {
       showLoading(context);
       await _googleSignIn.signOut();
-      if (context.mounted ) {
+      if (context.mounted) {
         Navigator.of(context).pop(); // Error on this line
       }
       Navigator.pushAndRemoveUntil(
@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton.large(
-        backgroundColor: AppColors.purpleBackground,
+          backgroundColor: AppColors.purpleBackground,
           onPressed: () {
             Navigator.push(
                 context,
@@ -121,6 +121,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       if (!snapshot.hasData) {
                         return const Center(
                           child: CircularProgressIndicator(),
+                        );
+                      }
+                     else if (snapshot.data!.size == 0) {
+                        return Padding(
+                          padding:  EdgeInsets.only(top: screenHeight(context) * 0.15),
+                          child: const Text(
+                            "No List Found",
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal, fontSize: 20),
+                          ),
                         );
                       }
                       return ListView.builder(

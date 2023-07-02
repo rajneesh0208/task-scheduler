@@ -86,18 +86,25 @@ class _LoginScreenState extends State<LoginScreen> {
   sigIn() async {
     LoginDetailsProvider loginProvider = Provider.of(context, listen: false);
     UserCredential loginCredential = await signInWithGoogle();
+    showLoading(context);
     if (loginCredential.credential!.token != null) {
       print(loginCredential.credential);
       print(loginCredential.additionalUserInfo);
       print(loginCredential.user);
       await loginProvider.userDetails(loginCredential);
       if (loginProvider.loginDetails != null) {
+        if (context.mounted ) {
+          Navigator.of(context).pop(); // Error on this line
+        }
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => const HomeScreen()),
             (route) => false);
       }
     } else {
+      if (context.mounted ) {
+        Navigator.of(context).pop(); // Error on this line
+      }
       print("something went wrong with google sigin =====>");
     }
   }

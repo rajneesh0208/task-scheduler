@@ -147,6 +147,7 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
                               icon: const Icon(Icons.calendar_month_rounded,
                                   color: AppColors.white),
                               onPressed: () {
+                                FocusManager.instance.primaryFocus?.unfocus();
                                 pickDate(
                                   context,
                                 );
